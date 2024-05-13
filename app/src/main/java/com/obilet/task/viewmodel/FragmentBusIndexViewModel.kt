@@ -127,7 +127,6 @@ private val sharedPreferencesManager:SharedPreferencesManager):
 
                     override fun onError(e: Throwable) {
                         progressLoading.value = false
-                        clothesError.value = true
                         e.printStackTrace()
                     }
                 })

@@ -182,7 +182,7 @@
 
                         android:fontFamily="@font/robotoregular"
                         android:text="Kasım Pazartesi"
-                        android:textSize="20dp"/>
+                        android:textSize="19dp"/>
 
 
                 </LinearLayout>
@@ -220,14 +220,27 @@
                         android:fontFamily="@font/robotoregular"
                         android:text="11"
                         android:textSize="40sp"/>
+                  <LinearLayout
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_marginTop="20dp">
+                      <TextView
+                          android:id="@+id/dateMounthReturnText"
+                          android:layout_width="100dp"
+                          android:layout_height="wrap_content"
+                          android:fontFamily="@font/robotoregular"
+                          android:text="Kasım"
+                          android:textSize="20dp"/>
+                      <TextView
+                          android:id="@+id/dateDayNameReturnText"
+                          android:layout_width="100dp"
+                          android:layout_height="wrap_content"
+                          android:fontFamily="@font/robotoregular"
+                          android:text="Pazartesi"
+                          android:textSize="19dp"/>
+                  </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/dateMounthReturnText"
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:fontFamily="@font/robotoregular"
-                        android:text="Kasım Pazartesi"
-                        android:textSize="20dp"/>
                     <ImageView
                         android:id="@+id/dateIcon1"
                         android:layout_width="18dp"
@@ -263,10 +276,12 @@
 
             <!-- Sol Taraftaki TextView -->
             <TextView
-
-                android:layout_width="wrap_content"
+                android:id="@+id/passengerType"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:text="1 YETİŞKİN"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:layout_gravity="start"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"/>

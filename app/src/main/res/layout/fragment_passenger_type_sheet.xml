@@ -41,15 +41,16 @@
                 android:paddingEnd="10dp"
                 android:onClick="increaseNumber"
                 android:tag="1"/>
+
             <TextView
                 android:id="@+id/numberTextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
                 android:layout_marginEnd="10dp"
-                android:textSize="18sp"
+                android:tag="yetişkin"
+                android:text="1"
                 android:textColor="@android:color/black"
-                android:tag="1"/>
+                android:textSize="18sp" />
             <!-- Eksi Butonu -->
             <Button
                 android:id="@+id/minusButton1"
@@ -106,15 +107,16 @@
                 android:paddingEnd="10dp"
                 android:onClick="increaseNumber"
                 android:tag="2"/>
+
             <TextView
                 android:id="@+id/numberTextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:tag="çocuk"
                 android:text="0"
-                android:textSize="18sp"
                 android:textColor="@android:color/black"
-                android:tag="2"/>
+                android:textSize="18sp" />
             <!-- Eksi Butonu -->
             <Button
                 android:id="@+id/minusButton2"
@@ -145,7 +147,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Öğrenci"
+            android:text="Bebek"
             android:textSize="18sp"
             android:layout_gravity="start"
             android:textColor="@android:color/black"/>
@@ -172,15 +174,16 @@
                 android:paddingEnd="10dp"
                 android:onClick="increaseNumber"
                 android:tag="3"/>
+
             <TextView
                 android:id="@+id/numberTextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:tag="bebek"
                 android:text="0"
-                android:textSize="18sp"
                 android:textColor="@android:color/black"
-                android:tag="3"/>
+                android:textSize="18sp" />
             <!-- Eksi Butonu -->
             <Button
                 android:id="@+id/minusButton3"

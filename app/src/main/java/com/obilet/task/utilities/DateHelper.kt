@@ -38,6 +38,46 @@ class DateHelper @Inject constructor() {
 
         return outputFormat.format(inputFormat.parse(date)!!)
     }
+    //Convert date to "dd MMMM EEEE" format
+    fun flightIndexDate(date: String): String {
+
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("dd MMMM EEEE", Locale("tr", "TR"))
+
+            val date = inputFormat.parse(date)
+            return outputFormat.format(date)?.uppercase(Locale("tr")) ?: ""
+
+    }
+    //Convert date to "dd" format
+    fun flightIndexDateDay(date: String): String {
+
+        val outputFormat = SimpleDateFormat("dd", Locale("tr", "TR"))
+        val inputFormat = SimpleDateFormat("dd MMMM EEEE", Locale("tr", "TR"))
+
+        val date = inputFormat.parse(date)
+        return outputFormat.format(date)?.uppercase(Locale("tr")) ?: ""
+
+    }
+    //Convert date to "MMMM" format
+    fun flightIndexDateMounth(date: String): String {
+
+        val outputFormat = SimpleDateFormat("MMMM", Locale("tr", "TR"))
+        val inputFormat = SimpleDateFormat("dd MMMM EEEE", Locale("tr", "TR"))
+
+        val date = inputFormat.parse(date)
+        return outputFormat.format(date)?.uppercase(Locale("tr")) ?: ""
+
+    }
+    //Convert date to "EEEE" format
+    fun flightIndexDateDayName(date: String): String {
+
+        val outputFormat = SimpleDateFormat("EEEE", Locale("tr", "TR"))
+        val inputFormat = SimpleDateFormat("dd MMMM EEEE", Locale("tr", "TR"))
+
+        val date = inputFormat.parse(date)
+        return outputFormat.format(date)?.uppercase(Locale("tr")) ?: ""
+
+    }
     //To get tomorrow's date
     fun getTomorrow(): String {
         val calendar = Calendar.getInstance()
