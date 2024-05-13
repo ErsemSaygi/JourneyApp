@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <data>
+        <variable
+            name="journey"
+            type="com.obilet.task.model.JourneyInfo" />
+        <variable
+            name="departure"
+            type="String" />
+        <variable
+            name="destinationRoute"
+            type="String" />
+        <variable
+            name="arrival"
+            type="String" />
+    </data>
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@drawable/border_background">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <!-- Kalkış ve varış bilgileri -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/departureTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorFourth"
+                android:fontFamily="@font/opensansregular"
+                android:text="Kalkış"/>
+
+            <TextView
+                android:id="@+id/destinationTextView"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/opensanssemibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(departure)}"/>
+
+        </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_gravity="center_horizontal|bottom">
+
+                <ImageView
+                    android:id="@+id/animal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="bottom"
+                    android:src="@drawable/ic_right_arrow" />
+
+            </RelativeLayout>
+
+
+
+
+
+        <!-- Altta diğer bilgiler -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="5">
+
+            <TextView
+                android:id="@+id/info1TextView"
+                android:textColor="@color/colorFourth"
+                android:fontFamily="@font/opensansregular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Varış"/>
+
+            <TextView
+
+                android:id="@+id/info2TextView"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/opensanssemibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(arrival)}"/>
+
+        </LinearLayout>
+
+        <!-- En sağdaki kırmızı arka planlı TextView -->
+        <TextView
+            android:id="@+id/redTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:background="@color/colorRed"
+            android:fontFamily="@font/opensanssemibold"
+            android:padding="10dp"
+            android:text="@{String.valueOf(journey.originalPrice+` TL`)}"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/redTextView1"
+        android:textColor="@color/colorThird"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/opensansregular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{String.valueOf(destinationRoute)}"
+        />
+</LinearLayout>
+</layout>

@@ -1,0 +1,9 @@
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:layout_margin="16dp"
+    android:background="@android:color/black"
+    android:textColor="@android:color/white"
+    android:text="Tab İçeriği"/>

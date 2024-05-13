@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/dashBoardFragment">
+
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.obilet.task.view.utils.DashBoardFragment"
+        android:label="DashBoardFragment" >
+        <action
+            android:id="@+id/action_dashBoardFragment_to_fragmentTravelQuery"
+            app:destination="@id/fragmentTravelQuery" >
+            <argument
+                android:name="cityId"
+                android:defaultValue='""' />
+        </action>
+        <action
+            android:id="@+id/action_dashBoardFragment_to_fragmentTravels"
+            app:destination="@id/fragmentTravels" />
+        <argument
+            android:name="buttonType"
+            app:argType="com.obilet.task.utilities.ButtonType" />
+        <argument
+            android:name="cityId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentBusIndex"
+        android:name="com.obilet.task.view.FragmentBusIndex"
+        android:label="FragmentBusIndex" >
+        <argument
+            android:name="buttonType"
+            app:argType="com.obilet.task.utilities.ButtonType"
+            android:defaultValue="DEFAULT" />
+        <action
+            android:id="@+id/action_fragmentBusIndex_to_fragmentTravelQuery"
+            app:destination="@id/fragmentTravelQuery" />
+        <argument
+            android:name="cityId"
+            app:argType="string"
+            android:defaultValue='""' />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTravelQuery"
+        android:name="com.obilet.task.view.FragmentTravelQuery"
+        android:label="FragmentTravelQuery" >
+        <action
+            android:id="@+id/action_fragmentTravelQuery_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+        <action
+            android:id="@+id/action_fragmentTravelQuery_to_fragmentBusIndex"
+            app:destination="@id/fragmentBusIndex" />
+        <argument
+            android:name="buttonType"
+            app:argType="com.obilet.task.utilities.ButtonType" />
+        <argument
+            android:name="cityId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTravels"
+        android:name="com.obilet.task.view.FragmentTravels"
+        android:label="FragmentTravels" >
+        <argument
+            android:name="originName"
+            app:argType="string" />
+        <argument
+            android:name="destinationName"
+            app:argType="string" />
+        <argument
+            android:name="dateTime"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentTravels_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
+    <argument
+        android:name="cityId"
+        android:defaultValue='""' />
+</navigation>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data></data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.FragmentTravels">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Mavi arka planlı container -->
+            <LinearLayout
+                android:id="@+id/blueContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+
+                android:background="@color/colorPrimary"
+                >
+                <Button
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableStart="@drawable/ic_arrow_back"
+                    android:drawablePadding="8dp"
+                    android:text=""
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="top|center"
+                    android:layout_marginEnd="30dp"
+                    >
+                    <TextView
+                        android:id="@+id/destinationRoute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Orta"
+                        android:textColor="@android:color/white" />
+                    <TextView
+                        android:id="@+id/journeyDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="2"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+                <!-- Geri butonu, sol üst köşede -->
+
+
+            </LinearLayout>
+
+            <!-- RecyclerView, diğer kalan alan -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewTravels"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/blueContainer"
+                android:background="@android:color/white"/>
+
+        </RelativeLayout>
+
+
+    </FrameLayout>
+</layout>
