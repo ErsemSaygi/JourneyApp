@@ -205,6 +205,11 @@ class FragmentBusIndex : Fragment() {
             viewModel.originName=orgn.name
             Constants.originId=orgn.id
         }
+        else{
+            val locationOr=viewModel.busLocations.value?.get(0) as Location
+            binding.originText.text=locationOr.name
+            Constants.originId=locationOr.id
+        }
 
         if(destinationId!=""){
 
@@ -214,15 +219,13 @@ class FragmentBusIndex : Fragment() {
             Constants.destinationId=destn.id
         }
 
-        if(originId=="" && destinationId==""){
-            val locationOr=viewModel.busLocations.value?.get(0) as Location
-            val locationDes=viewModel.busLocations.value?.get(1) as Location
+        else{
 
+            val locationDes=viewModel.busLocations.value?.get(1) as Location
             binding.destinationText.text=locationDes.name
             Constants.destinationId=locationDes.id
 
-            binding.originText.text=locationOr.name
-            Constants.originId=locationOr.id
+
         }
 
     }
