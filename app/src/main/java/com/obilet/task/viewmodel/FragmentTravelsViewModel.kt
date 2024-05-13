@@ -16,9 +16,12 @@ import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
-class FragmentTravelsViewModel @Inject constructor(application: Application, private val dateHelper: DateHelper):BaseViewModel(application) {
+class FragmentTravelsViewModel @Inject constructor(
+    application: Application,
+    private val travelAPIService: Service,
+    private val dateHelper: DateHelper):BaseViewModel(application) {
 
-    private val travelAPIService= Service()
+
     private val disposable= CompositeDisposable()
     var travelList= MutableLiveData<List<JourneyInfo>>()
 

@@ -14,11 +14,15 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 @HiltViewModel
-class FragmentTravelQueryViewModel@Inject constructor(application: Application, private val dateHelper: DateHelper):BaseViewModel(application) {
+class FragmentTravelQueryViewModel
+@Inject constructor(
+    application: Application,
+    private val dateHelper: DateHelper,
+    private val travelAPIService: Service):BaseViewModel(application) {
 
     var busLocationsQuery= MutableLiveData<List<Location>>()
     private val disposable= CompositeDisposable()
-    private val travelAPIService= Service()
+
     val progressLoading= MutableLiveData<Boolean>()
     val clothesError= MutableLiveData<Boolean>()
 

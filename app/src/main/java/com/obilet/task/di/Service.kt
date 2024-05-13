@@ -3,6 +3,7 @@ package com.obilet.task.di
 import com.obilet.task.data.remote.TravelAPI
 import com.obilet.task.model.*
 import com.obilet.task.utilities.Constants
+import com.obilet.task.utilities.DateHelper
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -13,10 +14,11 @@ import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 @Module
 @InstallIn(SingletonComponent::class)
-class Service {
+class Service @Inject constructor(private val dateHelper: DateHelper) {
     private val BASE_URL = "https://v2-api.obilet.com/api/";
     private val client = OkHttpClient.Builder()
         .addInterceptor(object : Interceptor {
@@ -73,7 +75,7 @@ class Service {
     fun getTravels(date:String): Single<JourneyResponseJourney>
     {
         val postData = PostDataBusLocations(
-            data = mapOf("origin-id" to Constants.originId, "destination-id" to Constants.destinationId,"departure-date" to Constants.dateTravel),
+            data = mapOf("origin-id" to Constants.originId, "destination-id" to Constants.destinationId,"departure-date" to dateHelper.convertTravelDate(Constants.dateTravel)),
             date = date,
             device_session = mapOf("session-id" to Constants.sessionId, "device-id" to Constants.deviceId),
             language="tr-TR"

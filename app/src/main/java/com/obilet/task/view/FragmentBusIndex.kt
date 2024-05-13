@@ -94,21 +94,18 @@ class FragmentBusIndex : Fragment() {
         //For today button
         binding.buttonToday.setOnClickListener{
             val output=dateHelper.getDate()
-            val dateTravel=viewModel.convertTravelDate(output)
-            val formattedDate=viewModel.convertLocaleDate(output)
-            sharedPreferencesManager.putString("date",formattedDate)
-            sharedPreferencesManager.putString("dateTravel",dateTravel)
-            viewModel.date.value=formattedDate
+            val date=dateHelper.presentationDate(output)
+            viewModel.saveLocalDate(output)
+            viewModel.date.value=date
+
         }
 
         //For tomorrow button
         binding.buttonTomorrow.setOnClickListener{
-            val output=viewModel.getTomorrow()
-            val dateTravel=viewModel.convertTravelDate(output)
-            val formattedDate=viewModel.convertLocaleDate(output)
-            sharedPreferencesManager.putString("date",formattedDate)
-            sharedPreferencesManager.putString("dateTravel",dateTravel)
-            viewModel.date.value=formattedDate
+            val output=dateHelper.getTomorrow()
+            val date=dateHelper.presentationDate(output)
+            viewModel.saveLocalDate(output)
+            viewModel.date.value=date
         }
 
         //To find travels
@@ -180,18 +177,18 @@ class FragmentBusIndex : Fragment() {
     //Setting the date when the program is logged in, using the local database if the user has logged in before
     private fun startingSetupDate(){
         val dateS=sharedPreferencesManager.getString("date","")
-        val dateTravel=sharedPreferencesManager.getString("dateTravel","")
-        Constants.dateTravel=dateTravel.toString()
-        if(dateS==""){
-            val output=viewModel.getTomorrow()
-            val dateTravel=viewModel.convertTravelDate(output)
-            val formattedDate=viewModel.convertLocaleDate(output)
 
-            Constants.dateTravel=dateTravel
-            viewModel.date.value=formattedDate
+        Constants.dateTravel=dateS.toString()
+        if(dateS==""){
+            val output=dateHelper.getTomorrow()
+            val date=dateHelper.presentationDate(output)
+            Constants.dateTravel=output
+            viewModel.saveLocalDate(output)
+            viewModel.date.value=date
         }
         else{
-            viewModel.date.value=dateS
+            val date=dateHelper.presentationDate(dateS.toString())
+            viewModel.date.value=date
         }
     }
 

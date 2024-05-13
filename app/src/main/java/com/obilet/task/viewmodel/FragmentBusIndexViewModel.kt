@@ -8,6 +8,8 @@ import com.obilet.task.model.LocationResponse
 import com.obilet.task.model.User
 import com.obilet.task.utilities.ButtonType
 import com.obilet.task.utilities.Constants
+import com.obilet.task.utilities.DateHelper
+import com.obilet.task.utilities.SharedPreferencesManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -18,9 +20,13 @@ import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
-class FragmentBusIndexViewModel @Inject constructor(application: Application):BaseViewModel(application) {
+class FragmentBusIndexViewModel
+@Inject constructor(application: Application,
+private val travelAPIService:Service,
+private val sharedPreferencesManager:SharedPreferencesManager):
+    BaseViewModel(application) {
 
-    private val travelAPIService = Service()
+
     val clothesError = MutableLiveData<Boolean>()
     var busLocations = MutableLiveData<List<Location>>()
     var date = MutableLiveData<String>()
@@ -35,18 +41,13 @@ class FragmentBusIndexViewModel @Inject constructor(application: Application):Ba
         getSessionFromAPI()
     }
 
-    //To shoot tomorrow's date
-    fun getTomorrow(): String {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH) + 1
-        val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH) + 1
-        val hour = calendar.get(Calendar.HOUR_OF_DAY)
-        val minute = calendar.get(Calendar.MINUTE)
-        val second = calendar.get(Calendar.SECOND)
 
-        return "$year-$month-$dayOfMonth" + "T" + "$hour:$minute:$second"
+
+    fun saveLocalDate(date:String){
+
+        sharedPreferencesManager.putString("date",date)
     }
+
 
     //Change departure and return cities
     fun swapTravelCity() {
@@ -86,8 +87,8 @@ class FragmentBusIndexViewModel @Inject constructor(application: Application):Ba
         val today = Calendar.getInstance().time
 
 
-        val targetDateString = date
-        val targetDate = dateFormat.parse(targetDateString)
+
+        val targetDate = dateFormat.parse(date)
 
 
         if (targetDate.before(today)) {
@@ -96,26 +97,6 @@ class FragmentBusIndexViewModel @Inject constructor(application: Application):Ba
             return false
         }
     }
-
-    fun convertLocaleDate(date: String): String {
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val outputFormat = SimpleDateFormat("dd MMMM yyyy EEEE", Locale("tr"))
-
-        return outputFormat.format(inputFormat.parse(date)!!)
-
-    }
-
-    fun convertTravelDate(date: String): String {
-        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
-        val originalDate = originalFormat.parse(date)
-
-        val targetFormat = SimpleDateFormat("yyyy-M-dd", Locale.getDefault())
-        val dateString = targetFormat.format(originalDate)
-
-        return dateString.toString()
-
-    }
-
 
     fun findCity(cityId: String): Location {
 
