@@ -2,6 +2,7 @@ package com.obilet.task.di
 
 import android.content.Context
 import com.obilet.task.utilities.SharedPreferencesManager
+import com.obilet.task.viewmodel.FragmentBusIndexViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,4 +19,4 @@ object AppModule {
     fun provideSharedPreferencesManager(@ApplicationContext context: Context): SharedPreferencesManager {
         return SharedPreferencesManager(context)
     }
-}
+ }

@@ -1,7 +1,6 @@
 package com.obilet.task.view
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,25 +8,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.obilet.task.databinding.FragmentBusIndexBinding
 import com.obilet.task.databinding.FragmentFlightIndexBinding
 import com.obilet.task.model.Location
-import com.obilet.task.utilities.ButtonType
-import com.obilet.task.utilities.Constants
-import com.obilet.task.utilities.DashboardProgressListener
 import com.obilet.task.utilities.DateHelper
+import com.obilet.task.view.utils.BaseFragment
 import com.obilet.task.view.utils.PassengerTypeSheetFragment
 import com.obilet.task.viewmodel.FragmentBusIndexViewModel
 import com.obilet.task.viewmodel.FragmentFlightIndexViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
+import observe
 import javax.inject.Inject
 @AndroidEntryPoint
-class FragmentFlightIndex : Fragment() {
+class FragmentFlightIndex : BaseFragment() {
     @Inject
     lateinit var dateHelper: DateHelper
     private lateinit var binding: FragmentFlightIndexBinding
     private val viewModel: FragmentFlightIndexViewModel by activityViewModels()
+    private val viewModelBus: FragmentBusIndexViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,12 +35,18 @@ class FragmentFlightIndex : Fragment() {
         return binding.root
     }
 
+    override fun observeViewModel() {
+        observe(viewModel.passengerType,::getPassengerType)
+    }
+
+    private fun getPassengerType(type:String){
+        binding.passengerType.text=type
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getSession()
+        viewModel.getSession(viewModelBus.busLocations.value)
         startingSetupDate()
         startingSetupTravelText()
-        observableLiveData()
 
         binding.swapTravelCityButton.setOnClickListener{
 
@@ -61,7 +64,7 @@ class FragmentFlightIndex : Fragment() {
 
 
     //Setting the date when the program is logged in, using the local database if the user has logged in before
-    @SuppressLint("SetTextI18n")
+
     private fun startingSetupDate(){
 
 
@@ -100,10 +103,6 @@ class FragmentFlightIndex : Fragment() {
 
 
     }
-   private fun observableLiveData(){
-       viewModel.passengerType.observe(this,Observer{
-           binding.passengerType.text=it
-       })
-   }
+
 
 }

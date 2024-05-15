@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,17 +16,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.obilet.task.R
 import com.obilet.task.adapter.LocationQuery
 import com.obilet.task.databinding.FragmentTravelQueryBinding
+import com.obilet.task.model.Location
 import com.obilet.task.utilities.ButtonType
+import com.obilet.task.view.utils.BaseFragment
+import com.obilet.task.viewmodel.FragmentBusIndexViewModel
 import com.obilet.task.viewmodel.FragmentTravelQueryViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import observe
 
 @AndroidEntryPoint
-class FragmentTravelQuery : Fragment() {
+class FragmentTravelQuery : BaseFragment() {
     private val locationQueryAdapter= LocationQuery(arrayListOf())
     private var buttonType: ButtonType =ButtonType.ORIGIN
     private lateinit var binding: FragmentTravelQueryBinding
     private lateinit var viewModel:FragmentTravelQueryViewModel
-
+    private val viewModelBus: FragmentBusIndexViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +43,6 @@ class FragmentTravelQuery : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel= ViewModelProvider(this)[FragmentTravelQueryViewModel::class.java]
-        observeLiveData()
         val recyclerView = view.findViewById<RecyclerView>(R.id.resultQueryRecyclerView)
         recyclerView.layoutManager= LinearLayoutManager(context)
         recyclerView.adapter= locationQueryAdapter
@@ -60,7 +64,7 @@ class FragmentTravelQuery : Fragment() {
 
                 val inputLength = s?.length ?: 0
                 if (inputLength > 2) {
-                    viewModel.searchCity(s.toString())
+                    viewModel.searchCity(s.toString(),viewModelBus.sessionId,viewModelBus.deviceID)
                 }
             }
 
@@ -71,14 +75,22 @@ class FragmentTravelQuery : Fragment() {
 
 
     }
-    private fun observeLiveData(){
-        viewModel.busLocationsQuery.observe(viewLifecycleOwner, Observer{
-            it?.let {
-                locationQueryAdapter.updateQueryList(it,buttonType)
-            }
 
-        })
+    override fun observeViewModel() {
+        observe(viewModel.busLocationsQuery,:: busLocationQuery)
+
     }
+
+
+    private fun busLocationQuery(list:List<Location>){
+        locationQueryAdapter.updateQueryList(list,buttonType)
+
+    }
+
+
+
+
+
 
 
 }

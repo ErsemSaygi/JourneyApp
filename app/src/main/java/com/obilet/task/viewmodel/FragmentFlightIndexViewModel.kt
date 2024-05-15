@@ -20,8 +20,8 @@ class FragmentFlightIndexViewModel
 
 
     //For bus locations RxJava
-     fun getSession() {
-        busLocations = MutableLiveData(Constants.listLocation)
+     fun getSession(list: List<Location>?) {
+        busLocations = MutableLiveData(list)
 
 
     }

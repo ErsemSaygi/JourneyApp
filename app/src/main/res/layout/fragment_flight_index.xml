@@ -284,7 +284,7 @@
                 android:maxLines="1"
                 android:layout_gravity="start"
                 android:textSize="18sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@color/colorThird"/>
 
             <!-- Sağ Taraftaki Butonlar -->
             <LinearLayout

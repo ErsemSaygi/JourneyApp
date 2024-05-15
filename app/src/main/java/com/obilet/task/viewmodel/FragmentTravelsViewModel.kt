@@ -27,10 +27,10 @@ class FragmentTravelsViewModel @Inject constructor(
 
 
     //For journeys RxJava
-    fun getTravelFromAPI(){
+    fun getTravelFromAPI(originId:Int, sessionId:String, destinationId:Int, deviceId:String,dateTravel:String ){
 
         disposable.add(
-            travelAPIService.getTravels(dateHelper.getDate())
+            travelAPIService.getTravels(dateHelper.getDate(),originId, sessionId, destinationId, deviceId ,dateTravel)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<JourneyResponseJourney>() {

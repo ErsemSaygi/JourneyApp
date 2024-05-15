@@ -1,6 +1,8 @@
 package com.obilet.task.viewmodel
 
 import android.app.Application
+import android.devicelock.DeviceId
+import android.view.contentcapture.ContentCaptureSessionId
 import androidx.lifecycle.MutableLiveData
 import com.obilet.task.di.Service
 import com.obilet.task.model.Location
@@ -30,10 +32,10 @@ class FragmentTravelQueryViewModel
 
 
     //For search city RxJava
-    fun searchCity(searchedText: String) {
+    fun searchCity(searchedText: String,sessionId: String,deviceId: String) {
         val currentDate = dateHelper.getDate()
         disposable.add(
-            travelAPIService.getBusLocationsWithQuery(currentDate,searchedText)
+            travelAPIService.getBusLocationsWithQuery(currentDate,searchedText,sessionId,deviceId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<LocationResponse>() {
