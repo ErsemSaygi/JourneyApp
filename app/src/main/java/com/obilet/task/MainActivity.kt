@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.RelativeLayout
+import androidx.fragment.app.Fragment
 import com.obilet.task.utilities.DashboardProgressListener
 import dagger.hilt.android.AndroidEntryPoint
 

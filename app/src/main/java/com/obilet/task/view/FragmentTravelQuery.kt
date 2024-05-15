@@ -41,8 +41,8 @@ class FragmentTravelQuery : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         viewModel= ViewModelProvider(this)[FragmentTravelQueryViewModel::class.java]
+        super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.resultQueryRecyclerView)
         recyclerView.layoutManager= LinearLayoutManager(context)
         recyclerView.adapter= locationQueryAdapter

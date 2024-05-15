@@ -17,9 +17,16 @@
         <entry key="..\:/TravelsApp/app/src/main/res/layout/item_location_query.xml" value="0.22554347826086957" />
         <entry key="..\:/TravelsApp/app/src/main/res/layout/item_travel.xml" value="0.22554347826086957" />
         <entry key="..\:/TravelsApp/app/src/main/res/layout/loading_layout.xml" value="0.176" />
+        <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/drawable/background_bottom_sheet.xml" value="0.112" />
+        <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/drawable/background_rounded_top.xml" value="0.166" />
+        <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/drawable/blue_top_bootomsheet.xml" value="0.112" />
+        <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/layout/fragment_flight_index.xml" value="0.16" />
-        <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/layout/fragment_passenger_type_sheet.xml" value="0.10733695652173914" />
+        <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/layout/fragment_passenger_type_sheet.xml" value="0.264" />
         <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/layout/fragment_passenger_type_sheet2.xml" value="0.10733695652173914" />
+        <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/layout/fragment_travels.xml" value="0.2" />
+        <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/layout/item_passengertype.xml" value="0.144" />
         <entry key="..\:/Users/AFAC/Documents/TravelsApp/app/src/main/res/layout/loading_layout.xml" value="0.22554347826086957" />
       </map>
     </option>

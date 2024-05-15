@@ -9,14 +9,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.obilet.task.R
 import com.obilet.task.adapter.Travels
 import com.obilet.task.databinding.FragmentTravelsBinding
 import com.obilet.task.model.JourneyInfo
+import com.obilet.task.utilities.ButtonType
 import com.obilet.task.utilities.DashboardProgressListener
 import com.obilet.task.view.utils.BaseFragment
+import com.obilet.task.view.utils.DashBoardFragmentDirections
 import com.obilet.task.viewmodel.FragmentBusIndexViewModel
 import com.obilet.task.viewmodel.FragmentTravelsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -71,6 +74,8 @@ class FragmentTravels : BaseFragment() , DashboardProgressListener {
             binding.journeyDate.text=dateTime
         }
 
+        binding.backButton.setOnClickListener{navigateHome()}
+
     }
 
     override fun observeViewModel() {
@@ -82,7 +87,11 @@ class FragmentTravels : BaseFragment() , DashboardProgressListener {
         hideProgressBar()
     }
 
+    private fun navigateHome(){
+        val action = FragmentTravelsDirections.actionFragmentTravelsToDashBoardFragment(ButtonType.DEFAULT,"")
 
+        findNavController().navigate(action)
+    }
     override fun showProgressBar() {
         dashboardProgressListener.showProgressBar()
     }

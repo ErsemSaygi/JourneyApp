@@ -36,8 +36,9 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="top|center"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginEnd="50dp"
                     >
+
                     <TextView
                         android:id="@+id/destinationRoute"
                         android:layout_width="wrap_content"
@@ -50,6 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+
                         android:text="2"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
